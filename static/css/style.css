@@ -1,0 +1,10 @@
+body { font-family: 'Roboto', sans-serif; background-color: #f8f9fa; }
+.card { transition: transform 0.3s, box-shadow 0.3s; border: none; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.hover-zoom img { transition: transform 0.3s; }
+.hover-zoom:hover img { transform: scale(1.05); }
+.stars i { font-size: 1.2em; }
+.nav-tabs .nav-link { color: #007bff; }
+.nav-tabs .nav-link.active { border-bottom: 2px solid #007bff; }
+.btn-outline-danger { transition: all 0.3s; }
+.btn-outline-danger:hover i { transform: scale(1.2); }

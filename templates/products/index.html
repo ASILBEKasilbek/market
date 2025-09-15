@@ -1,0 +1,78 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Mahsulotlar</h1>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Filtrlar</h5>
+                <form method="get">
+                    <div class="accordion" id="filters">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#narx">Narx</button></h2>
+                            <div id="narx" class="accordion-collapse collapse show">
+                                <input type="number" name="price_min" placeholder="Min" class="form-control mb-2" value="{{ request.GET.price_min }}">
+                                <input type="number" name="price_max" placeholder="Max" class="form-control" value="{{ request.GET.price_max }}">
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rang">Rang</button></h2>
+                            <div id="rang" class="accordion-collapse collapse">
+                                <select name="color" class="form-select">
+                                    <option value="">Barchasi</option>
+                                    <option value="oq" {% if request.GET.color == 'oq' %}selected{% endif %}>Oq</option>
+                                    <option value="qora" {% if request.GET.color == 'qora' %}selected{% endif %}>Qora</option>
+                                    <!-- Qo'shimcha ranglar -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#olcham">O‘lcham</button></h2>
+                            <div id="olcham" class="accordion-collapse collapse">
+                                <select name="size" class="form-select">
+                                    <option value="">Barchasi</option>
+                                    <option value="S" {% if request.GET.size == 'S' %}selected{% endif %}>S</option>
+                                    <option value="M" {% if request.GET.size == 'M' %}selected{% endif %}>M</option>
+                                    <!-- Qo'shimcha -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kategoriya">Kategoriya</button></h2>
+                            <div id="kategoriya" class="accordion-collapse collapse">
+                                <select name="category" class="form-select">
+                                    <option value="">Barchasi</option>
+                                    <option value="kuylak" {% if request.GET.category == 'kuylak' %}selected{% endif %}>Kuylak</option>
+                                    <option value="shim" {% if request.GET.category == 'shim' %}selected{% endif %}>Shim</option>
+                                    <!-- Kengayish uchun -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3 w-100">Filtrla</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm hover-zoom">
+                    {% if product.images.exists %}
+                    <img src="{{ product.images.first.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.price }} so‘m {% if product.is_on_sale %}<span class="badge bg-success">Aksiya</span>{% endif %}</p>
+                        <div class="stars">Reyting: {% for i in "12345" %}{% if forloop.counter <= product.rating %}<i class="mdi mdi-star text-warning"></i>{% else %}<i class="mdi mdi-star-outline"></i>{% endif %}{% endfor %}</div>
+                        <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary">Batafsil</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
