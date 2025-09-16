@@ -1,10 +1,79 @@
-body { font-family: 'Roboto', sans-serif; background-color: #f8f9fa; }
-.card { transition: transform 0.3s, box-shadow 0.3s; border: none; }
-.card:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-.hover-zoom img { transition: transform 0.3s; }
-.hover-zoom:hover img { transform: scale(1.05); }
-.stars i { font-size: 1.2em; }
-.nav-tabs .nav-link { color: #007bff; }
-.nav-tabs .nav-link.active { border-bottom: 2px solid #007bff; }
-.btn-outline-danger { transition: all 0.3s; }
-.btn-outline-danger:hover i { transform: scale(1.2); }
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Card hover */
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Hover zoom */
+.hover-zoom img {
+  transition: transform 0.3s;
+}
+.hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Stars */
+.stars i {
+  font-size: 1.2em;
+}
+
+/* Tabs */
+.nav-tabs .nav-link {
+  color: #007bff;
+}
+.nav-tabs .nav-link.active {
+  border-bottom: 2px solid #007bff;
+}
+
+/* Button */
+.btn-outline-danger {
+  transition: all 0.3s;
+}
+.btn-outline-danger:hover i {
+  transform: scale(1.2);
+}
+
+/* 📱 Responsive moslashuv */
+@media (max-width: 768px) { /* planshet */
+  .card {
+    margin-bottom: 20px;
+  }
+  .stars i {
+    font-size: 1em; /* biroz kichikroq bo‘ladi */
+  }
+  .nav-tabs {
+    flex-wrap: wrap; /* tablar qatorlarga tushadi */
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) { /* telefon */
+  body {
+    font-size: 14px;
+  }
+  .card {
+    margin-bottom: 15px;
+  }
+  .hover-zoom:hover img {
+    transform: scale(1.02); /* kamroq zoom, chunki telefon ekran kichkina */
+  }
+  .stars i {
+    font-size: 0.9em;
+  }
+  .nav-tabs {
+    font-size: 0.85rem;
+  }
+  .btn-outline-danger {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
