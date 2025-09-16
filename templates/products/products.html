@@ -220,12 +220,17 @@
     color: #ffc107 !important;
 }
 
-/* Mobil optimizatsiya */
-@media (max-width: 576px) {
-    h2 { font-size: 1.3rem; }
-    .fs-4 { font-size: 1.1rem !important; }
+/* 📱 Mobil optimizatsiya */
+@media (max-width: 768px) {
+    h2 { font-size: 1.25rem; }
+    .fs-4 { font-size: 1rem !important; }
     .btn { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
     .img-thumbnail { width: 55px; height: 55px; }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .list-group-item { font-size: 0.9rem; }
 }
 </style>
 {% endblock %}
